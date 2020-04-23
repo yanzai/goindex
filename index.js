@@ -6,6 +6,10 @@ var authConfig = {
   /*"client_id": "202264815644.apps.googleusercontent.com",
   "client_secret": "X4Z3ca8xfWDb1Voo-F9a7ZxJ",*/
   // 强烈推荐使用自己的 client_id 和 client_secret
+  //add themes color, darkmode
+  "theme" : "material", // material  classic
+  "main_color": "light-green",
+  "accent_color": "green",
   "client_id": "",
   "client_secret": "",
   "refresh_token": "", // 授权 token
@@ -102,6 +106,7 @@ function html(current_drive_order = 0, model = {}) {
     window.MODEL = JSON.parse('${JSON.stringify(model)}');
     window.current_drive_order = ${current_drive_order};
   </script>
+  <script>var main_color = "${authConfig.main_color}";var accent_color = "${authConfig.accent_color}";var dark = ${authConfig.dark_theme};</script>
   <script src="//cdn.jsdelivr.net/combine/gh/jquery/jquery@3.2/dist/jquery.min.js,gh/yanzai/goindex@${authConfig.version}/themes/${authConfig.theme}/app.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
 </head>
