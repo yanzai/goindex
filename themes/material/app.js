@@ -347,7 +347,7 @@ function append_files_to_list(path, files) {
 	            </a>
 	        </li>`;
     } else {
-      var p = path + item.name;
+      var p = path + encodeURIComponent(item.name);
       const filepath = path + item.name;
       var c = "file";
       // 当加载完最后一页后，才显示 README ，否则会影响滚动事件
