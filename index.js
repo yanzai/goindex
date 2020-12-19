@@ -66,11 +66,11 @@ const authConfig = {
   /**
    * Enable or disable service account usage with go2index. If set to true, `service_account_json` will need to have all the appropriate values
    */
-  service_account: false,
+  service_account_enabled: false,
   /**
    * This will hold the contents of the JSON file downloaded from Google Cloud Platform console
    */
-  service_account_json: {},
+  service_accounts_json: [],
 };
 
 /**
@@ -858,9 +858,10 @@ class googleDrive {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
     var post_data;
-    if(this.authConfig.service_account && typeof this.authConfig.service_account_json != "undefined")
+    if(this.authConfig.service_account_enabled && typeof this.authConfig.service_accounts_json != "undefined" && this.authConfig.service_accounts_json.length > 0)
     {
-      const jwttoken = await JWT.generateGCPToken(this.authConfig.service_account_json);
+      const service_account = this.authConfig.service_accounts_json[Math.floor(Math.random() * this.authConfig.service_accounts_json.length)];
+      const jwttoken = await JWT.generateGCPToken(service_account);
       post_data = {
         grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
         assertion: jwttoken,
